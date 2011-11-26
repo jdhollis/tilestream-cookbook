@@ -52,7 +52,7 @@ node[:tilestream][:tilesets].each { |url|
 
 service "tilestream" do
   supports :start => true, :stop => true, :restart => true
-  start_command "NODE_ENV=production tilestream start #{ start_options_helper_for(node) } >> /var/log/tilestream.log 2>&1 &"
-  stop_command "killall tilestream"
+  start_command "NODE_ENV=production sudo tilestream start #{ start_options_helper_for(node) } &"
+  stop_command "sudo killall tilestream"
   action :start
 end
