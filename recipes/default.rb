@@ -40,6 +40,16 @@ directory node[:tilestream][:tiles] do
   recursive true
 end
 
+node[:tilestream][:tilesets].each { |url|
+  filename = url.split('/').last
+  remote_file "#{ node[:tilestream][:tiles] }/#{ filename }" do
+    source url
+    owner "root"
+    group "root"
+    action :create_if_missing
+  end
+}
+
 service "tilestream" do
   supports :start => true, :stop => true, :restart => true
   start_command "NODE_ENV=production tilestream start #{ start_options_helper_for(node) } >> /var/log/tilestream.log 2>&1 &"

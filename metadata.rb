@@ -2,7 +2,7 @@ maintainer       "J.D. Hollis"
 license          "Apache 2.0"
 description      "Installs/configures TileStream"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.0.1"
+version          "0.0.2"
 depends          "nodejs"
 
 grouping "tilestream",
@@ -38,6 +38,12 @@ attribute "tilestream/accesslog",
   :display_name => "Access log",
   :description => "Print every request to stdout.",
   :default => "false"
+
+attribute "tilestream/tilesets",
+  :display_name => "Tilesets",
+  :description => "Filenames and URLs of tilesets to download to the tiles directory.",
+  :default => ""
+
 attribute "tilestream/cloud",
   :display_name => "Cloud?",
   :description => "Is this a cloud server? If so, set :host to the public hostname of the server.",
