@@ -32,7 +32,7 @@ execute "Install Tilestream" do
   not_if "npm list -g | grep tilestream"
 end
 
-directory "/var/tilestream/tiles" do
+directory node[:tilestream][:tiles] do
   owner "root"
   group "root"
   mode 0755
