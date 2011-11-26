@@ -1,28 +1,30 @@
 module OptionsHelper  
-  def start_options_helper_for(tilestream_node)
+  def start_options_helper_for(the_node)
     Array.new.tap { |options|
-      unless tilestream_node[:host].nil?
-        options << "--host #{ tilestream_node[:host] }"
+      if the_node[:tilestream][:host].nil? && the_node[:tilestream][:cloud]
+        options << "--host #{ the_node[:cloud][:public_hostname] }"
+      else 
+        options << "--host #{ the_node[:tilestream][:host] }"
       end
     
-      unless tilestream_node[:ui_port].nil?
-        options << "--uiPort #{ tilestream_node[:ui_port] }"
+      unless the_node[:tilestream][:ui_port].nil?
+        options << "--uiPort #{ the_node[:tilestream][:ui_port] }"
       end
     
-      unless tilestream_node[:tile_port].nil?
-        options << "--tilePort #{ tilestream_node[:tile_port] }"
+      unless the_node[:tilestream][:tile_port].nil?
+        options << "--tilePort #{ the_node[:tilestream][:tile_port] }"
       end
     
-      unless tilestream_node[:subdomains].nil?
-        options << "--subdomains #{ tilestream_node[:subdomains].join(',') }"
+      unless the_node[:tilestream][:subdomains].nil?
+        options << "--subdomains #{ the_node[:tilestream][:subdomains].join(',') }"
       end
     
-      unless tilestream_node[:tiles].nil?
-        options << "--tiles #{ tilestream_node[:tiles] }"
+      unless the_node[:tilestream][:tiles].nil?
+        options << "--tiles #{ the_node[:tilestream][:tiles] }"
       end
     
-      unless tilestream_node[:accesslog].nil?
-        options << "--accesslog #{ tilestream_node[:accesslog] }"
+      unless the_node[:tilestream][:accesslog].nil?
+        options << "--accesslog #{ the_node[:tilestream][:accesslog] }"
       end
     }.join(" ")
   end

@@ -23,3 +23,4 @@ default[:tilestream][:tile_port] = nil
 default[:tilestream][:subdomains] = nil
 default[:tilestream][:tiles] = '/var/tilestream/tiles'
 default[:tilestream][:accesslog] = nil
+default[:tilestream][:cloud] = false

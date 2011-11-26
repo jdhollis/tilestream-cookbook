@@ -38,3 +38,7 @@ attribute "tilestream/accesslog",
   :display_name => "Access log",
   :description => "Print every request to stdout.",
   :default => "false"
+attribute "tilestream/cloud",
+  :display_name => "Cloud?",
+  :description => "Is this a cloud server? If so, set :host to the public hostname of the server.",
+  :default => "false"

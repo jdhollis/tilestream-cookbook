@@ -42,7 +42,7 @@ end
 
 service "tilestream" do
   supports :start => true, :stop => true, :restart => true
-  start_command "NODE_ENV=production tilestream start #{ start_options_helper_for(node[:tilestream]) } >> /var/log/tilestream.log 2>&1 &"
+  start_command "NODE_ENV=production tilestream start #{ start_options_helper_for(node) } >> /var/log/tilestream.log 2>&1 &"
   stop_command "killall tilestream"
   action :start
 end
